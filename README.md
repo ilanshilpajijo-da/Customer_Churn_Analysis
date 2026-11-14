@@ -84,6 +84,29 @@ Charge_Band thresholds are my own choice, picked to split the 18 to 119 monthly 
 
 Data cleaning and data preparation are complete. Next stage: exploratory data analysis with PivotTables.
 
+#Exploratory Data Analysis (EDA)
+
+All analysis was done with PivotTables in the `EDA` sheet, built from `Analysis_Data`. Churn_Flag is 1/0, so its average equals the churn rate.
+
+### 7.1 Overall Churn Rate
+- Total customers: 7,043
+- Churned customers: 1,869
+- **Overall churn rate: 26.5%**
+
+### 7.2 Churn Rate by Contract Type
+
+| Contract | Customers | Churn Rate |
+|---|---|---|
+| Month-to-month | 3,875 | 42.7% |
+| One year | 1,473 | 11.3% |
+| Two year | 1,695 | 2.8% |
+| **Total** | **7,043** | **26.5%** |
+
+**Findings:**
+- Month-to-month customers churn at 42.7%, about 15 times the rate of Two year customers (2.8%).
+- 55% of all customers (3,875 of 7,043) are on month-to-month contracts, which makes this the largest risk group.
+- Longer contracts are associated with lower churn. This shows an association, not proof that the contract itself causes retention.
+
 ## 8. Upcoming Tasks
 
 1. Perform exploratory data analysis (EDA) using PivotTables.
@@ -97,3 +120,7 @@ Data cleaning and data preparation are complete. Next stage: exploratory data an
 ## 9. Expected Outcome
 
 The final objective is to transform raw customer data into meaningful business insights that help understand customer churn, identify high-risk customer segments, and support better customer retention strategies.
+## 7. Exploratory Data Analysis (EDA)
+
+All analysis was done with PivotTables in the `EDA` sheet, built from `Analysis_Data`. Churn_Flag is 1/0, so its average equals the churn rate.
+
