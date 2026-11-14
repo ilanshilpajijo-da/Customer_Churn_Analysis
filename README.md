@@ -138,6 +138,23 @@ All analysis was done with PivotTables in the `EDA` sheet, built from `Analysis_
 - Automatic payment methods have the lowest churn.
 - This is an association. Electronic check users may also be mostly month-to-month customers, so part of this effect may come from contract type.
 
+### 7.5 Churn Rate by Internet Service
+
+| Internet Service | Customers | Churn Rate |
+|---|---|---|
+| DSL | 2,421 | 19.0% |
+| Fiber optic | 3,096 | 41.9% |
+| No internet service | 1,526 | 7.4% |
+| **Total** | **7,043** | **26.5%** |
+
+**Findings:**
+- Fiber optic customers churn at 41.9%, about 2.2 times the rate of DSL customers (19.0%).
+- Fiber optic is the largest group, with 44% of all customers (3,096 of 7,043).
+- Customers without internet service have the lowest churn at 7.4%.
+- This is an association. Price, service quality and contract type may all play a role, and this data cannot show which one drives the difference.
+
+
+
 ## 8. Upcoming Tasks
 
 1. Perform exploratory data analysis (EDA) using PivotTables.
