@@ -107,6 +107,22 @@ All analysis was done with PivotTables in the `EDA` sheet, built from `Analysis_
 - 55% of all customers (3,875 of 7,043) are on month-to-month contracts, which makes this the largest risk group.
 - Longer contracts are associated with lower churn. This shows an association, not proof that the contract itself causes retention.
 
+### 7.3 Churn Rate by Tenure Group
+
+| Tenure Group (months) | Customers | Churn Rate |
+|---|---|---|
+| 0-12 | 2,186 | 47.4% |
+| 13-24 | 1,024 | 28.7% |
+| 25-48 | 1,594 | 20.4% |
+| 49+ | 2,239 | 9.5% |
+| **Total** | **7,043** | **26.5%** |
+
+**Findings:**
+- Churn falls steadily as tenure increases, from 47.4% in the first year to 9.5% after four years.
+- Customers in their first 12 months churn at about 5 times the rate of customers with 49+ months.
+- 31% of all customers (2,186 of 7,043) are in their first year, so early-life retention is a key opportunity.
+- This shows an association, not proof of cause.
+
 ## 8. Upcoming Tasks
 
 1. Perform exploratory data analysis (EDA) using PivotTables.
