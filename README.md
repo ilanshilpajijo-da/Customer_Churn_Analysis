@@ -122,6 +122,21 @@ All analysis was done with PivotTables in the `EDA` sheet, built from `Analysis_
 - Customers in their first 12 months churn at about 5 times the rate of customers with 49+ months.
 - 31% of all customers (2,186 of 7,043) are in their first year, so early-life retention is a key opportunity.
 - This shows an association, not proof of cause.
+### 7.4 Churn Rate by Payment Method
+
+| Payment Method | Customers | Churn Rate |
+|---|---|---|
+| Bank transfer (automatic) | 1,544 | 16.7% |
+| Credit card (automatic) | 1,522 | 15.2% |
+| Electronic check | 2,365 | 45.3% |
+| Mailed check | 1,612 | 19.1% |
+| **Total** | **7,043** | **26.5%** |
+
+**Findings:**
+- Electronic check users churn at 45.3%, about 3 times the rate of customers on automatic payments (15.2% and 16.7%).
+- Electronic check is also the largest group, with 34% of all customers (2,365 of 7,043).
+- Automatic payment methods have the lowest churn.
+- This is an association. Electronic check users may also be mostly month-to-month customers, so part of this effect may come from contract type.
 
 ## 8. Upcoming Tasks
 
