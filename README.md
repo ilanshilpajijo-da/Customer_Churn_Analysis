@@ -153,6 +153,36 @@ All analysis was done with PivotTables in the `EDA` sheet, built from `Analysis_
 - Customers without internet service have the lowest churn at 7.4%.
 - This is an association. Price, service quality and contract type may all play a role, and this data cannot show which one drives the difference.
 
+### 7.6 Churn Rate by Monthly Charge Band
+
+Bands: Low (< 35), Medium (35 to 69.99), High (70+) monthly charges.
+
+| Charge Band | Customers | Churn Rate |
+|---|---|---|
+| Low | 1,731 | 10.9% |
+| Medium | 1,721 | 23.6% |
+| High | 3,591 | 35.5% |
+| **Total** | **7,043** | **26.5%** |
+
+**Findings:**
+- Churn rises with monthly charges, from 10.9% in the Low band to 35.5% in the High band, about 3.3 times higher.
+- The High band holds 51% of all customers (3,591 of 7,043).
+- This is an association. High charges overlap with services such as fiber optic, so the effect cannot be attributed to price alone.
+
+### 7.7 Churn Rate by Senior Citizen Status
+
+| Senior Citizen | Customers | Churn Rate |
+|---|---|---|
+| No | 5,901 | 23.6% |
+| Yes | 1,142 | 41.7% |
+| **Total** | **7,043** | **26.5%** |
+
+**Findings:**
+- Senior citizens churn at 41.7%, about 1.8 times the rate of other customers (23.6%).
+- They make up only 16% of all customers (1,142 of 7,043), so their share of total churn is smaller than the rate suggests.
+- This is an association and does not explain why the gap exists.
+
+
 
 
 ## 8. Upcoming Tasks
