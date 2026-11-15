@@ -182,23 +182,65 @@ Bands: Low (< 35), Medium (35 to 69.99), High (70+) monthly charges.
 - They make up only 16% of all customers (1,142 of 7,043), so their share of total churn is smaller than the rate suggests.
 - This is an association and does not explain why the gap exists.
 
+### 7.8 Average Monthly Charges: Churned vs Retained
 
+| Churn | Avg Monthly Charges |
+|---|---|
+| No (retained) | 61.27 |
+| Yes (churned) | 74.44 |
+| **All customers** | **64.76** |
 
+**Findings:**
+- Churned customers paid on average 13.17 more per month than retained customers (about 21% higher).
+- This agrees with the charge band result, where churn rises with monthly charges.
+- This is an association, not proof that price causes churn.
 
-## 8. Upcoming Tasks
+## 8. Excel Dashboard
 
-1. Perform exploratory data analysis (EDA) using PivotTables.
-2. Analyze churn distribution and churn rate by segment.
-3. Identify patterns and factors associated with churn.
-4. Develop charts and visualizations.
-5. Perform customer segmentation using SQL.
-6. Build an interactive Power BI dashboard.
-7. Document business insights and recommendations.
+![Excel Dashboard](images/dashboard_excel.png)
 
-## 9. Expected Outcome
+The dashboard (`Dashboard` sheet) shows three KPIs (7,043 customers, 1,869 churned, 26.5% churn rate) and four charts. The highest-churn group in each chart is highlighted in red.
+
+| Chart | Type | Key message |
+|---|---|---|
+| Churn Rate by Contract Type | Column | Month-to-month customers churn at 42.7%, about 15 times the rate of two-year customers (2.8%). |
+| Churn Rate by Tenure Group | Line | Customers in their first 12 months churn at 47.4%, about 5 times the rate of customers with 49+ months (9.5%). |
+| Churn Rate by Payment Method | Bar | Electronic check users churn at 45.3%, about 3 times the rate of credit card (automatic) users (15.2%). |
+| Churn Rate by Internet Service | Column | Fiber optic users churn at 41.9%, about 2.2 times the rate of DSL users (19.0%). |
+
+## 9. Key Insights and Recommendations
+
+### Highest-risk segments
+- Month-to-month contracts: 42.7% churn, 55% of all customers.
+- First 12 months of tenure: 47.4% churn, 31% of all customers.
+- Electronic check payment: 45.3% churn, 34% of all customers.
+- Fiber optic internet: 41.9% churn, 44% of all customers.
+- High monthly charges (70+): 35.5% churn, 51% of all customers.
+
+### Recommendations
+1. **Move customers to longer contracts.** Offer discounts or benefits to month-to-month customers for switching to one or two year plans.
+2. **Strengthen early-life retention.** Improve onboarding and offer retention incentives in the first 12 months, when churn is highest.
+3. **Encourage automatic payments.** Offer small incentives for switching from electronic check to bank transfer or credit card autopay.
+4. **Review the fiber optic offer.** Check pricing and service quality for fiber customers and consider targeted retention deals.
+
+## 10. Limitations
+
+- All findings are associations, not proof of cause. For example, electronic check users may also be mostly month-to-month customers, so effects can overlap.
+- Each segment was analyzed one at a time. Combined segments (for example month-to-month and fiber optic together) are not yet analyzed. This is planned for the SQL stage.
+- Charge_Band thresholds (35 and 70) are my own choice.
+
+## 11. Current Project Status
+
+Data cleaning, data preparation, EDA and the Excel dashboard are complete. Next stage: SQL analysis, then a Power BI dashboard.
+
+## 12. Upcoming Tasks
+
+1. Export `Analysis_data` as CSV for SQL and Power BI.
+2. Perform SQL analysis: verify the Excel results and find new insights, such as combined high-risk segments and revenue lost to churn.
+3. Build an interactive Power BI dashboard.
+4. Update the insights and recommendations with the SQL and Power BI findings.
+
+## 13. Expected Outcome
 
 The final objective is to transform raw customer data into meaningful business insights that help understand customer churn, identify high-risk customer segments, and support better customer retention strategies.
-## 7. Exploratory Data Analysis (EDA)
-
-All analysis was done with PivotTables in the `EDA` sheet, built from `Analysis_Data`. Churn_Flag is 1/0, so its average equals the churn rate.
 
