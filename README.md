@@ -197,7 +197,7 @@ Bands: Low (< 35), Medium (35 to 69.99), High (70+) monthly charges.
 
 ## 8. Excel Dashboard
 
-![Excel Dashboard](images/dashboard_excel.png)
+![Excel Dashboard](dashboard_excel.png)
 
 The dashboard (`Dashboard` sheet) shows three KPIs (7,043 customers, 1,869 churned, 26.5% churn rate) and four charts. The highest-churn group in each chart is highlighted in red.
 
