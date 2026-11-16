@@ -229,18 +229,39 @@ The dashboard (`Dashboard` sheet) shows three KPIs (7,043 customers, 1,869 churn
 - Each segment was analyzed one at a time. Combined segments (for example month-to-month and fiber optic together) are not yet analyzed. This is planned for the SQL stage.
 - Charge_Band thresholds (35 and 70) are my own choice.
 
-## 11. Current Project Status
+## 11. SQL Analysis (in progress)
+
+The cleaned dataset (`Analysis_data`, exported as CSV) was loaded into SQLite using DB Browser for SQLite. The goal of this stage is to confirm the Excel results and find new insights, such as combined high-risk segments.
+
+### 11.1 Setup
+- Created a database `Churn.db` and imported the CSV into a table named `Churn` (column names taken from the first row).
+- First import mistake: the "column names in first line" option was missed, so columns were named field1, field2 and so on. Fixed by deleting the table and importing again.
+- Known issue: the column `Churn_Flag` was typed with a space in Excel, so it appears as `"Churn _Flag"` in the table and needs double quotes in queries.
+
+### 11.2 Verification of Excel results
+| Check | Query | Result | Matches Excel |
+|---|---|---|---|
+| Total customers | `SELECT COUNT(*) FROM Churn;` | 7,043 | Yes |
+| Churned customers | `SELECT COUNT(*) FROM Churn WHERE Churn = 'Yes';` | 1,869 | Yes |
+
+### 11.3 What I learned
+- In SQL, single quotes mark a text value (`'Yes'`) and double quotes mark a column name (`"Churn _Flag"`). Mixing them up returned 0.0 with no error.
+- Reading the error message and checking the table schema is the fastest way to find a mistake.
+
+Queries are saved in `churn_queries.sql`.
+
+## 12. Current Project Status
 
 Data cleaning, data preparation, EDA and the Excel dashboard are complete. Next stage: SQL analysis, then a Power BI dashboard.
 
-## 12. Upcoming Tasks
+## 13. Upcoming Tasks
 
 1. Export `Analysis_data` as CSV for SQL and Power BI.
 2. Perform SQL analysis: verify the Excel results and find new insights, such as combined high-risk segments and revenue lost to churn.
 3. Build an interactive Power BI dashboard.
 4. Update the insights and recommendations with the SQL and Power BI findings.
 
-## 13. Expected Outcome
+## 14. Expected Outcome
 
 The final objective is to transform raw customer data into meaningful business insights that help understand customer churn, identify high-risk customer segments, and support better customer retention strategies.
 
