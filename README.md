@@ -235,6 +235,15 @@ The goal of this stage was to confirm the Excel results with SQL and to find new
 | Churn rate by Senior Citizen | 23.6%, 41.7% | Yes |
 | Avg monthly charges (retained, churned) | 61.27, 74.44 | Yes |
 
+**Churn rate by contract type(SQL result):**
+
+![Churn rate by contract type in SQL](sql_contract_churn.png.png)
+
+**Churn rate by tenure group(SQL result):**
+
+![Churn rate by tenure group in SQL](sql_tenure_churn.png.png)
+
+
 The churn rate queries follow this pattern, changing only the grouping column:
 
 ```sql
@@ -252,6 +261,10 @@ SELECT COUNT(*), ROUND(100 * AVG(Churn_Flag), 1)
 FROM Churn
 WHERE Contract = 'Month-to-month' AND InternetService = 'Fiber optic' AND PaymentMethod = 'Electronic check';
 ```
+**Combined high-risk segment(month-to-month + fiber optic + electronic check);**
+
+![High-risk segment in SQL](sql_high_risk_segment.png.png)
+
 
 - 1,307 customers (about 18.6% of all customers) fall into this segment.
 - Their churn rate is **60.4%**, about 2.3 times the overall rate of 26.5%.
@@ -262,6 +275,10 @@ WHERE Contract = 'Month-to-month' AND InternetService = 'Fiber optic' AND Paymen
 ```sql
 SELECT ROUND(SUM(MonthlyCharges), 2) FROM Churn WHERE Churn = 'Yes';
 ```
+**Monthly revenue lost to churned customes**
+
+![Revenue lost to churn in SQL](sql_revenue_lost.png.png)
+
 
 - Churned customers paid **139,130.85** per month in total (currency not stated in the dataset).
 - This is about 30% of total monthly revenue (7,043 customers x 64.76 average).
