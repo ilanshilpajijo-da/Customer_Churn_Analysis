@@ -237,11 +237,11 @@ The goal of this stage was to confirm the Excel results with SQL and to find new
 
 **Churn rate by contract type(SQL result):**
 
-![Churn rate by contract type in SQL](sql_contract_churn.png.png)
+![Churn rate by contract type in SQL](sql_contract_churn.png)
 
 **Churn rate by tenure group(SQL result):**
 
-![Churn rate by tenure group in SQL](sql_tenure_churn.png.png)
+![Churn rate by tenure group in SQL](sql_tenure_churn.png)
 
 
 The churn rate queries follow this pattern, changing only the grouping column:
@@ -263,7 +263,7 @@ WHERE Contract = 'Month-to-month' AND InternetService = 'Fiber optic' AND Paymen
 ```
 **Combined high-risk segment(month-to-month + fiber optic + electronic check);**
 
-![High-risk segment in SQL](sql_high_risk_segment.png.png)
+![High-risk segment in SQL](sql_high_risk_segment.png)
 
 
 - 1,307 customers (about 18.6% of all customers) fall into this segment.
@@ -277,7 +277,7 @@ SELECT ROUND(SUM(MonthlyCharges), 2) FROM Churn WHERE Churn = 'Yes';
 ```
 **Monthly revenue lost to churned customes**
 
-![Revenue lost to churn in SQL](sql_revenue_lost.png.png)
+![Revenue lost to churn in SQL](sql_revenue_lost.png)
 
 
 - Churned customers paid **139,130.85** per month in total (currency not stated in the dataset).
