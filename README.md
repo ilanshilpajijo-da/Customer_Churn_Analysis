@@ -1,5 +1,16 @@
 # Customer Churn Analysis
 
+![Power BI Dashboard](dashboard_powerbi.png)
+
+**Tools:** Excel | SQL (SQLite) | Power BI | GitHub
+
+**Key findings:**
+- Overall churn rate is **26.5%** (1,869 of 7,043 customers).
+- Month-to-month customers churn at **42.7%**, about 15 times the rate of two-year customers.
+- Customers on month-to-month + fiber optic + electronic check churn at **60.4%**.
+- Churned customers represent about **30% of monthly revenue**.
+
+
 ## 1. Project Overview
 
 This project focuses on analyzing customer churn in a telecommunications company using the IBM Telco Customer Churn dataset.
@@ -29,7 +40,7 @@ Dataset Link: https://www.kaggle.com/datasets/blastchar/telco-customer-churn
 
 - Microsoft Excel (data cleaning, EDA, dashboard)
 - SQL with DB Browser for SQLite (verification and new insights)
-- Power BI (planned)
+- Power BI (interactive dashboard)
 - GitHub
 
 ## 5. Data Preparation and Cleaning
@@ -235,14 +246,13 @@ The goal of this stage was to confirm the Excel results with SQL and to find new
 | Churn rate by Senior Citizen | 23.6%, 41.7% | Yes |
 | Avg monthly charges (retained, churned) | 61.27, 74.44 | Yes |
 
-**Churn rate by contract type(SQL result):**
+**Churn rate by contract type (SQL result):**
 
 ![Churn rate by contract type in SQL](sql_contract_churn.png)
 
-**Churn rate by tenure group(SQL result):**
+**Churn rate by tenure group (SQL result):**
 
 ![Churn rate by tenure group in SQL](sql_tenure_churn.png)
-
 
 The churn rate queries follow this pattern, changing only the grouping column:
 
@@ -261,10 +271,10 @@ SELECT COUNT(*), ROUND(100 * AVG(Churn_Flag), 1)
 FROM Churn
 WHERE Contract = 'Month-to-month' AND InternetService = 'Fiber optic' AND PaymentMethod = 'Electronic check';
 ```
-**Combined high-risk segment(month-to-month + fiber optic + electronic check);**
+
+**Combined high-risk segment (month-to-month + fiber optic + electronic check):**
 
 ![High-risk segment in SQL](sql_high_risk_segment.png)
-
 
 - 1,307 customers (about 18.6% of all customers) fall into this segment.
 - Their churn rate is **60.4%**, about 2.3 times the overall rate of 26.5%.
@@ -275,10 +285,10 @@ WHERE Contract = 'Month-to-month' AND InternetService = 'Fiber optic' AND Paymen
 ```sql
 SELECT ROUND(SUM(MonthlyCharges), 2) FROM Churn WHERE Churn = 'Yes';
 ```
-**Monthly revenue lost to churned customes**
+
+**Monthly revenue lost to churned customers:**
 
 ![Revenue lost to churn in SQL](sql_revenue_lost.png)
-
 
 - Churned customers paid **139,130.85** per month in total (currency not stated in the dataset).
 - This is about 30% of total monthly revenue (7,043 customers x 64.76 average).
@@ -290,7 +300,30 @@ SELECT ROUND(SUM(MonthlyCharges), 2) FROM Churn WHERE Churn = 'Yes';
 - `DISTINCT` shows the exact spelling and case of values before filtering on them.
 - Reading the error message and checking the table schema is the fastest way to find a mistake.
 
-## 10. Key Insights and Recommendations
+## 10. Power BI Dashboard
+
+![Power BI Dashboard](dashboard_powerbi.png)
+
+An interactive dashboard was built in Power BI Desktop from the same CSV (`Telco_Churn_Analysis_Data.csv`). The file is `Telco_Churn_Dashboard.pbix`.
+
+### 10.1 Components
+
+| Component | Details |
+|---|---|
+| KPI cards | Total Customers (7,043), Churned Customers (1,869), Churn Rate (26.5%) |
+| Charts | Churn rate by Contract Type (column), Payment Method (column), Tenure Group (line), Internet Service (column) |
+| Slicers | Contract, Internet Service, Tenure Group |
+
+### 10.2 How It Works
+- Churn rate in each chart is the average of `Churn_Flag` (1 = churned, 0 = retained), the same logic used in Excel and SQL.
+- The slicers filter every card and chart at once, so a segment can be explored with one click. For example, selecting Month-to-month shows how the churn rate changes for every other factor.
+- All dashboard figures match the Excel and SQL results.
+
+### 10.3 What I Learned
+- Setting the column data type to Whole number is needed before Power BI can average `Churn_Flag`.
+- The `Churn_Flag` column name had a space in the CSV. Renaming it in Power BI keeps names consistent with SQL.
+
+## 11. Key Insights and Recommendations
 
 ### Highest-risk segments
 - Month-to-month contracts: 42.7% churn, 55% of all customers.
@@ -309,23 +342,24 @@ SELECT ROUND(SUM(MonthlyCharges), 2) FROM Churn WHERE Churn = 'Yes';
 
 Churn removes about 30% of monthly revenue, so even a small reduction in churn has a large financial impact.
 
-## 11. Limitations
+## 12. Limitations
 
 - All findings are associations, not proof of cause. Overlapping factors (for example electronic check and month-to-month contracts) can share the same effect.
 - Only one combination of factors was analyzed in SQL. Other combinations, such as tenure with contract type, were not covered.
+- The Power BI dashboard shows churn rates by single factors and uses slicers for filtering. It does not include a predictive model.
 - The revenue estimate is a simple projection and assumes churned customers would have stayed for a full year.
 - Charge_Band thresholds (35 and 70) are my own choice.
 
-## 12. Current Project Status
+## 13. Current Project Status
 
-Data cleaning, data preparation, EDA, the Excel dashboard and the SQL analysis are complete. Next stage: Power BI dashboard.
+Data cleaning, data preparation, EDA, the Excel dashboard, the SQL analysis and the Power BI dashboard are complete.
 
-## 13. Upcoming Tasks
+## 14. Possible Next Steps
 
-1. Upload `churn_queries.sql` and the final files to GitHub.
-2. Build an interactive Power BI dashboard (KPI cards, slicers, key visuals).
-3. Update the insights and recommendations with the Power BI findings.
+1. Analyze more combined segments in SQL (for example tenure with contract type).
+2. Add a page to the Power BI dashboard for the combined high-risk segment and revenue lost to churn.
+3. Build a simple churn prediction model as a separate project.
 
-## 14. Expected Outcome
+## 15. Expected Outcome
 
 The final objective is to transform raw customer data into meaningful business insights that help understand customer churn, identify high-risk customer segments, and support better customer retention strategies.
